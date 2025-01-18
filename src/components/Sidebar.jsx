@@ -1,11 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import { Wallet } from 'lucide-react';
 
 const Sidebar = () => {
   return (
     <nav className='bg-white/5 backdrop-blur-lg border-t border-r border-b border-white/20 w-64 px-6 py-8 fixed rounded-tr-lg rounded-br-lg shadow-lg h-full'>
-      <h2 className='text-3xl font-semibold text-green-400 mb-8 text-center font-sofadi'>
-        Expense Tracker
-      </h2>
+      <div className='mb-8 flex items-center justify-center '>
+        <Wallet size={48} strokeWidth={1.2} />
+        <h2 className='text-2xl font-semibold  pl-4 leading-6 text-green-500   '>
+          Expense Tracker
+        </h2>
+      </div>
 
       <ul>
         <LinkPage to={'/'} text={'Dashboard'} />

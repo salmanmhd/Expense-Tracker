@@ -1,10 +1,12 @@
-import { useBank } from '../context/BankContext';
+import { useSelector } from 'react-redux';
 import IncomeTable from './IncomeTable';
 import Table from './Table';
 import Title from './Title';
 
 function Dashboard() {
-  const { balance, totalIncome, totalExpense, expenses, incomes } = useBank();
+  const { balance, totalIncome, totalExpense, expenses, incomes } = useSelector(
+    (state) => state.account
+  );
   return (
     <section id='dashboard' className='space-y-8'>
       <Title>Dashboard</Title>

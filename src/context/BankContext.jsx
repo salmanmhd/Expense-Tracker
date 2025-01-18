@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
+
 const initialState = {
   balance: 3000,
   totalIncome: 5000,

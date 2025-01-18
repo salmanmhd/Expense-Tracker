@@ -1,8 +1,10 @@
-import { useBank } from '../context/BankContext';
 import { jsPDF } from 'jspdf';
+import { useSelector } from 'react-redux';
 
 const Reports = () => {
-  const { totalExpense, totalIncome, expenses, incomes } = useBank();
+  const { totalExpense, totalIncome, expenses, incomes } = useSelector(
+    (state) => state.account
+  );
 
   function downloadPDF() {
     const doc = new jsPDF();

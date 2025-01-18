@@ -1,8 +1,9 @@
-import { useBank } from '../context/BankContext';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from './Modal';
 import Table from './Table';
 import Title from './Title';
 import { useState } from 'react';
+import { addExpense } from '../context/accountSlice';
 
 function AddExpense() {
   const [amount, setAmount] = useState('');
@@ -11,10 +12,12 @@ function AddExpense() {
   const [date, setDate] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const { dispatch, expenses } = useBank();
+  const { expenses } = useSelector((state) => state.account);
+  const dispatch = useDispatch();
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!expense || !amount || !date || !category) return;
 
     const obj = {
       expense,
@@ -24,7 +27,7 @@ function AddExpense() {
       id: Date.now(),
     };
 
-    dispatch({ type: 'AddExpense', payload: obj });
+    dispatch(addExpense(obj));
 
     setAmount('');
     setExpense('');
@@ -86,7 +89,10 @@ function AddExpense() {
             <input
               type='date'
               name='date'
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => {
+                setDate(e.target.value);
+                console.log(e.target.value);
+              }}
               className='w-full p-3 bg-white/10 border border-gray-600 rounded-lg backdrop-blur-lg'
             />
           </div>

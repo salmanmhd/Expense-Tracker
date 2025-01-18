@@ -1,10 +1,10 @@
-// import { useBank } from '../context/BankContext';
-
 // const Categories = () => {
 //   const { expenses } = useBank();
 //   let foodAmount = 0;
 //   let educationAmount = 0;
 //   let healthAmount = 0;
+
+import { useSelector } from 'react-redux';
 
 //   expenses.forEach((item) => {
 //     if (item.category === 'food') {
@@ -37,10 +37,9 @@
 // }
 
 // export default Categories;
-import { useBank } from '../context/BankContext';
 
 const Categories = () => {
-  const { expenses } = useBank();
+  const { expenses } = useSelector((state) => state.account);
   let foodAmount = 0;
   let educationAmount = 0;
   let healthAmount = 0;

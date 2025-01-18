@@ -1,20 +1,25 @@
 import { useState } from 'react';
-import { useBank } from '../context/BankContext';
 import Modal from './Modal';
 import Title from './Title';
 import IncomeTable from './IncomeTable';
+import { useDispatch, useSelector } from 'react-redux';
+import { addIncome } from '../context/accountSlice';
 
 function AddIncome() {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [source, setSource] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const { dispatch, totalExpense, totalIncome, balance, incomes } = useBank();
+  const dispatch = useDispatch();
+  const { totalExpense, totalIncome, balance, incomes } = useSelector(
+    (state) => state.account
+  );
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!amount || !date || !source) return;
     const obj = { amount, source, date, id: Date.now() };
-    dispatch({ type: 'addIncome', payload: obj });
+    dispatch(addIncome(obj));
     setShowModal(true);
   }
 
