@@ -4,6 +4,7 @@ const initialState = {
   balance: 3000,
   totalIncome: 5000,
   totalExpense: 2000,
+  categories: ['food', 'education', 'health'],
   incomes: [
     {
       amount: 5000,
@@ -57,9 +58,19 @@ const accountSlice = createSlice({
       state.balance -= action.payload.amount;
       state.expenses = [...state.expenses, action.payload];
     },
+    addCategory(state, action) {
+      if (!state.categories.includes(action.payload)) {
+        state.categories.push(action.payload.toLowerCase());
+      }
+    },
+    removeCategory(state, action) {
+      state.categories = state.categories.filter(
+        (category) => category !== action.payload.toLowerCase()
+      );
+    },
   },
 });
 
-export const { addIncome, addExpense } = accountSlice.actions;
+export const { addIncome, addExpense, addCategory, removeCategory } = accountSlice.actions;
 
 export default accountSlice.reducer;

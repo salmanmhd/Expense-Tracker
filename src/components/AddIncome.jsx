@@ -34,12 +34,12 @@ function AddIncome() {
 
   return (
     <div>
-      <section id='add-income' className='space-y-8 w-full h-full'>
+      <section id='add-income' className='space-y-8 w-full h-full pt-12 md:pt-0'>
         <Title>Add Income</Title>
         {/* Flex container to align form and table side by side */}
-        <div className='flex space-x-8'>
+        <div className='flex flex-col lg:flex-row lg:space-x-8 space-y-8 lg:space-y-0'>
           {/* Form */}
-          <form className='space-y-4 w-2/5' onSubmit={handleSubmit}>
+          <form className='space-y-4 w-full lg:w-1/2' onSubmit={handleSubmit}>
             <div className='space-y-2'>
               <label htmlFor='amount' className='block text-lg text-gray-300'>
                 Amount
@@ -80,12 +80,12 @@ function AddIncome() {
             </div>
             <button
               type='submit'
-              className='w-2/4 py-3 mt-10 bg-green-500 hover:bg-green-600 rounded-lg shadow-lg transition'
+              className='w-full py-3 mt-10 bg-green-500 hover:bg-green-600 rounded-lg shadow-lg transition'
             >
               Add Income
             </button>
           </form>
-          <div className='w-3/5 mt-8'>
+          <div className='w-full lg:w-1/2 pl-0 lg:pl-8 mt-8 lg:mt-0'>
             <IncomeTable incomes={incomes.slice(-3).reverse()} />
           </div>
         </div>

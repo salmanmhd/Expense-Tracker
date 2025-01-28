@@ -46,11 +46,11 @@ function AddExpense() {
     );
 
   return (
-    <section id='add-expense' className='w-full h-full space-y-8'>
+    <section id='add-expense' className='w-full h-full space-y-8 pt-12 md:pt-0'>
       <Title>Add Expense</Title>
 
-      <div className='flex space-x-8'>
-        <form className='space-y-4 w-1/2' onSubmit={handleSubmit}>
+      <div className='flex flex-col lg:flex-row lg:space-x-8 space-y-8 lg:space-y-0'>
+        <form className='space-y-4 w-full lg:w-1/2' onSubmit={handleSubmit}>
           <InputElement
             name={expense}
             onChange={(e) => setExpense(e.target.value)}
@@ -104,7 +104,7 @@ function AddExpense() {
           </button>
         </form>
 
-        <div className='w-2/5 pl-8 mt-8'>
+        <div className='w-full lg:w-1/2 pl-8 mt-8 lg:mt-0'>
           <Table expenses={expenses.slice(-4).reverse()} />
         </div>
       </div>
